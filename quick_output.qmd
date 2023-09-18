@@ -1,0 +1,90 @@
+---
+title: "Quick Output"
+author: "Raphael Bacot"
+format: html
+editor: visual
+---
+
+```{r, echo=FALSE, warning=F, message=F}
+
+country <- "car"
+
+## threshold starting which we graph will be reported in % of respondents instead of # respondents for select one/multiple questions:
+threshold <- 100 ## will set up default value for plot.select function in utils.R
+
+## result long table with standard column names [parent question, choice, question type, label, estimate, type of function used, ...]
+path.result <- ""
+result_long <- read.csv(path.result)
+
+## Kobo tool with latest up to date choices [including recoded others matching result table]
+path.tool <- ""
+tool <- read_excel(path.tool, "survey")
+choices <- read_excel(path.tool, "choices")
+
+## to have tab names, organize indicators and display notes for each graph + link with tool
+path.dap <- ""
+dap <- read_excel(path.dap)
+
+
+```
+
+# About the assessment
+
+<div style="text-align: justify;">
+
+Conflict erupted in Sudan on the 15th of April 2023, leading to displacement of hundreds of thousands of Sudanese nationals into neighbouring countries. The conflict, subsequent displacement, and anticipated macroeconomic consequences are likely to exacerbate the already severe humanitarian situation in Sudan and its neighbouring countries.
+
+Given the rapidly changing humanitarian context, [REACH Initiative](https://www.reach-initiative.org/) conducted a cross-border monitoring assessment to provide humanitarian actors with up-to-date information on the extent of humanitarian needs in shock-affected parts of Sudan and among recent arrivals in neighbouring countries. Findings presented here were gathered among recent arrivals in **Central African Republic**. Additional data and analysis from the cross-border and other assessments on the Sudan Crisis can be accessed on the REACH website.
+
+For additionnal information on the Sudan crisis, please consult [REACH Sudan Crisis Thread](https://www.impact-initiatives.org/what-we-do/news/sudan-crisis-thread/).
+
+# Methodology
+
+REACH enumerators conducted structured interviews with refugees and returnees entering **Central African Republic** at relevant border crossing points and in reception centers between `r "XXX"` 2023.
+
+In the absence of a comprehensive needs assessment on the situation in Sudan and neighbouring countries, the assessment consisted of two components to cover, as best as possible, the situation in areas of origin in Sudan as well as the situation of recent arrivals in **Central African Republic**.
+
+The first component involved a structured household survey primarily centered on returnees, with limited inclusion of refugees, crossing the Sudan-South Sudan border. In total, `r "XXX"` households were interviewed about their current situation and movement intentions, out of which `r "XXX"` were originating from `r "XXX"`.
+
+For the second component, household survey interviewees were asked to act as a key informant (KI) and report on behalf of their community in their settlement of origin about the situation. Respondents were selected for the KI component if they 1) reported that there were still people living in their settlement of origin and 2) confirmed that they felt knowledgeable on the situation in their settlement of origin since the 15th of April. In total, enumerators interviewed `r "XXX"` KIs among the `r "XXX"` households. All interviews were conducted at border crossing points and in reception centers by trained enumerators.
+
+Due to the purposive sampling, findings are not generalisable with a known level of precision and should be considered indicative only. As more information becomes available, it is recommended to triangulate findings with updated information where possible. In addition, it should be noted that certain questions were specifically directed to a selected group of respondents based on their previous answers, reducing further the sample size. Therefore, when interpreting the results, it is important to
+carefully look at the number of respondents who answered each question.
+
+</div>
+
+```{r, echo=FALSE}
+htmltools::img(src = knitr::image_uri("input/Logo_Reach_RGB_1.png"), 
+               alt = "REACH logo",
+               style = 'position:absolute; top:0; right:0; padding:0; width:250px')
+```
+
+
+
+```{r}
+## Plot one indicator
+
+### For them
+
+## need to ensure that there is one excel file that links Research question, data collection method, indicator label, indicator variable name + any note that should appear next to the graph for each indicator (for limitation, etc...)
+## Link between final DAP and tool and result table
+
+### FOR ME
+## ensure that utils.R are written in purrr style
+# => choice between plot.select and plot.int should be done based on either input vector OR recognizing type of variable
+# => first do everything with no disaggregation at all
+# => then check if it can recognize from result table if there is disaggregation levels to use with predefined names of columns for disaggregation
+
+var <- ""
+plot.var(x=var, res=result_long, data=clean)
+```
+
+
+
+
+
+
+
+
+
+
